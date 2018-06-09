@@ -1,3 +1,3 @@
 # findertag
 
-A description of this package.
+Command line tool for finder tag/label accessor.
