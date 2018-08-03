@@ -7,20 +7,20 @@
 
 import Foundation
 
-extension Sequence where Iterator.Element: Hashable {
+extension Sequence where Element: Hashable {
     
-    func unique() -> [Iterator.Element] {
+    func unique() -> [Element] {
         
-        var alreadyAdded = Set<Iterator.Element>()
+        var exist = Set<Element>()
         
         return filter {
             
-            if alreadyAdded.contains($0) {
+            if exist.contains($0) {
                 
                 return false
             }
             
-            alreadyAdded.insert($0)
+            exist.insert($0)
             
             return true
         }
