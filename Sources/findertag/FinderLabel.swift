@@ -86,32 +86,7 @@ func finderLabels() -> [String] {
 
 private func readFinderLabels() ->  [String] {
     
-    let defaultsCommand = Foundation.Process()
-    defaultsCommand.launchPath = "/usr/bin/defaults"
-    defaultsCommand.arguments = ["read", "com.apple.Finder", "FavoriteTagNames"]
-    
-    let pipe = Pipe()
-    defaultsCommand.standardOutput = pipe
-    
-    defaultsCommand.launch()
-    defaultsCommand.waitUntilExit()
-    
-    do {
-        
-        let names = try PropertyListDecoder()
-            .decode([String].self, from: pipe.fileHandleForReading.readDataToEndOfFile())
-            .map { $0.replacingOccurrences(of: "\\U", with: "\\u") }
-            .map { "\"" + $0 + "\"" }
-            .compactMap { $0.data(using: .utf8) }
-            .compactMap { try JSONSerialization.jsonObject(with: $0, options: .allowFragments) as? String }
-        
-        return (0...7).compactMap { labelToNameIndexMap[$0] }.map { names[$0] }
-        
-    } catch {
-        
-        print(error)
-        
-        return []
+    let finderDefaults = UserDefaults(suiteName: "com.apple.Finder")
+    return finderDefaults?.object(forKey: "FavoriteTagNames") as? [String] ?? []
 
-    }
 }
