@@ -1,5 +1,5 @@
 //
-//  FileTag.swift
+//  FileTagState.swift
 //  findertag
 //
 //  Created by Hori,Masaki on 2018/06/07.
@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct FileTag {
+struct FileTagState {
     
     let url: URL
     
     let tags: [String]
     
-    let children: [FileTag]
+    let children: [FileTagState]
 }
 
-func prityPrint(_ fileTags: [FileTag]) {
+func prityPrint(_ fileTags: [FileTagState]) {
     
     fileTags.forEach {
         prityPrint($0)
@@ -29,7 +29,7 @@ func prityPrint(_ fileTags: [FileTag]) {
     }
 }
 
-func prityPrint(_ fileTag: FileTag) {
+func prityPrint(_ fileTag: FileTagState) {
     
     print(fileTag.url.lastPathComponent, ":\t", fileTag.tags.joined(separator: ", "), separator: "")
 }

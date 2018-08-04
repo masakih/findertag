@@ -26,28 +26,28 @@ class FinderTag {
 
 extension FinderTag {
     
-    func view(recurcive: Bool) -> FileTag {
+    func view(recurcive: Bool) -> FileTagState {
         
         if recurcive {
             
             return fileTag(for: fileURL)
         }
         
-        return FileTag(url: fileURL,
+        return FileTagState(url: fileURL,
                        tags: fileURL.tags,
                        children: [])
     }
     
-    private func fileTag(for url: URL) -> FileTag {
+    private func fileTag(for url: URL) -> FileTagState {
         
         guard let files = try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil) else {
             
-            return FileTag(url: url,
+            return FileTagState(url: url,
                            tags: url.tags,
                            children: [])
         }
         
-        return FileTag(url: url,
+        return FileTagState(url: url,
                        tags: url.tags,
                        children: files.map(fileTag(for:)))
     }
