@@ -74,7 +74,7 @@ extension FinderLabel {
     
     var localizedName: String {
         
-        return localizedFinderLabels[self.rawValue]
+        return labelToNameIndexMap[rawValue].map { localizedFinderLabels[$0] } ?? ""
     }
 }
 
