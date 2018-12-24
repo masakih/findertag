@@ -51,20 +51,6 @@ enum FinderLabel: Int {
     case orange
 }
 
-//extension FinderLabel {
-//
-//    init?(name: String) {
-//
-//        guard let index = primitiveFinderLabels.index(of: name),
-//            let label = FinderLabel(rawValue: index) else {
-//
-//                return nil
-//        }
-//
-//        self = label
-//    }
-//}
-
 extension FinderLabel {
     
     var name: String {
