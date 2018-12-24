@@ -22,14 +22,14 @@ private var originalFinderLabels = [
 private var localizedFinderLabels: [String] = readFinderLabels()
 
 private let labelToNameIndexMap = [
-    0: 0,
-    1: 7,
-    2: 4,
-    3: 6,
-    4: 5,
-    5: 3,
-    6: 1,
-    7: 2,
+    0: 0,   // none
+    1: 7,   // Gray
+    2: 4,   // Green
+    3: 6,   // Purple
+    4: 5,   // Blue
+    5: 3,   // Yellow
+    6: 1,   // Red
+    7: 2,   // Orange
 ]
 
 enum FinderLabel: Int {
